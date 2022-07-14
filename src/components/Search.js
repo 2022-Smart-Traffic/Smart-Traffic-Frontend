@@ -1,8 +1,9 @@
 import { useState, useRef } from "react"
 import axios from "axios";
 import '../styles/header.css';
+import BusPosition from '../utils/BusPosition';
 
-const Search = () => {
+const Search = (props) => {
     const [ busLineList , setBusLineList ] = useState([]);
     const searchBarRef = useRef();
 
@@ -16,6 +17,10 @@ const Search = () => {
         }
     }
 
+    const selectBusHandler = async (lineId, lineNo) => {
+        props.setBusStopInfo(await BusPosition(lineId, lineNo));
+    }
+
     return (
         <div className="busline-search">
             <input
@@ -27,7 +32,9 @@ const Search = () => {
             <ul className="busline-search-list">
                 {busLineList.map((busLine, i) => {
                     return (
-                        <li key={i}>
+                        <li key={i} onClick={() => {
+                            selectBusHandler(busLine.lineid._text, busLine.buslinenum._text)
+                        }}>
                             {busLine.buslinenum._text}
                         </li>
                     );

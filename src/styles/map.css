@@ -6,3 +6,11 @@
     max-height: 1200px;
     height: 100%;
 }
+
+.my-position {
+    text-align: center;
+}
+.nameBox {
+    width: 100%;
+    height: 100%;
+}
