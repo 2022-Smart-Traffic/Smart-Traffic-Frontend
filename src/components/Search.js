@@ -1,6 +1,7 @@
 import { useState } from "react"
 import SampleData from "./data/Sample";
 import '../styles/header.css';
+import BusData from './data/BusData';
 
 const Search = () => {
     const [ searchList , setSearchList ] = useState('');

@@ -1,8 +1,8 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 
-const BusData = ( props ) => {
-    const [ BusList , setBusList ] = useState([]);
+function BusData(){
+    let [ BusList , setBusList ] = useState([]);
     const n = '강서구2'
     const fetchData = async() => {
         const result = await axios.get(`/api/bus/search?lineNo=${n}`);
@@ -16,15 +16,9 @@ const BusData = ( props ) => {
         return <div>로딩 중입니다.......</div>;
     }
 
-    return (
-        <div>
-            <p>테스트</p>
-            <div>
-                {JSON.stringify(BusList)}
-                {JSON.stringify(BusList)}
-            </div>
-        </div>
-    );
+    // let lineid = BusList[0].lineid._text;
+    // let buslinenum = BusList[0].buslinenum._text
+    return BusList;
 };
 
 export default BusData;
