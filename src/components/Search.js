@@ -1,22 +1,37 @@
-import { useState } from "react"
+import { useState, useRef } from "react"
+import axios from "axios";
 import '../styles/header.css';
 
 const Search = () => {
-    const [ searchList , setSearchList ] = useState('');
+    const [ busLineList , setBusLineList ] = useState([]);
+    const searchBarRef = useRef();
+
+    const getBusList = async (query) => {
+        return (await axios.get(`/api/bus/search?lineNo=${query}`)).data;
+    }
+
+    const keyDownHandler = async (event) => {
+        if (event.key == 'Enter') {
+            setBusLineList(await getBusList(searchBarRef.current.value));
+        }
+    }
+
     return (
-        <div>
-            <input type="text" placeholder="test" onChange={event => {setSearchList(event.target.value)}}></input>
-            <ul>
-                {/* {SampleData.filter((value)=>{
-                    if ( searchList === "" ) {
-                        return value;
-                    }
-                    else if ( value.name.toLowerCase().includes( searchList.toLowerCase() ) ) {
-                        return value;
-                    }
-                }).map((value,key) => {
-                    return <li>{value.name}</li>;
-                })} */}
+        <div className="busline-search">
+            <input
+                type="text"
+                placeholder="버스 노선 검색"
+                onKeyDown={keyDownHandler}
+                ref={searchBarRef}
+            ></input>
+            <ul className="busline-search-list">
+                {busLineList.map((busLine, i) => {
+                    return (
+                        <li key={i}>
+                            {busLine.buslinenum._text}
+                        </li>
+                    );
+                })}
             </ul>
         </div>
     )
