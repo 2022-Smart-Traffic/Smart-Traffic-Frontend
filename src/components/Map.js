@@ -14,10 +14,6 @@ export default function Map() {
         <div 
             id='myMap'
             className='kakao-map'
-            style={{
-                width: '1200px',
-                height: '700px'
-            }}
         >
         </div>
     );
