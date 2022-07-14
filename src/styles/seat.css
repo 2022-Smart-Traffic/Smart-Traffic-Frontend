@@ -1,0 +1,37 @@
+.seat-component {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    gap: 40px;
+}
+
+.seat_wrap {
+    display: flex;
+    flex-direction: column;
+    border: solid 2px black;
+}
+
+.seat_wrap .rows{
+    display: flex;
+    flex: 1;
+}
+
+.seat_wrap .rows > div {
+    flex: 1;
+    width: 75px;
+    height: 75px;
+}
+
+.seat_wrap .seat {
+    box-shadow: 0 0 0 1px #AAAAAA inset;
+    background-color: rgba(0, 255, 0, .3);
+}
+
+.seat_wrap .rows > div:not(.seat) {
+    color: white;
+}
+
+.seat_wrap .seat.using {
+    background-color: rgba(255, 0, 0, .3);
+}
