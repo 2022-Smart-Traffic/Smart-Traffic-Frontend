@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import KakaoMapScript from "./kakaomapscript";
 import '../styles/map.css'
 import BusData from '../utils/BusData';
+import BusPosition from '../utils/BusPosition';
 
 export default function Map() {
 
@@ -9,6 +10,7 @@ export default function Map() {
     useEffect(() => {
         KakaoMapScript();
         BusData();
+        BusPosition();
     }, []);
 
     return (

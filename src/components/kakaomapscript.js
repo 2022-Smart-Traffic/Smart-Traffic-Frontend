@@ -1,15 +1,15 @@
 /*global kakao */
-import BusData from '../utils/BusData';
+import BusPosition from '../utils/BusPosition';
 
 export default function KakaoMapScript() {
 
-    function displayMarker(locPosition, message) {
+    async function displayMarker(locPosition, message) {
         const imageSrc = 'https://cdn.wip-news.com/news/photo/202106/7047_8075_5142.jpg';
         let imageSize = new kakao.maps.Size(24, 35);
         let markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize);
     
         // 마커를 생성합니다
-        let marker = new kakao.maps.Marker({
+        let marker = new kakao().maps.Marker({
             map: map, 
             position: locPosition, 
             image : markerImage, 
@@ -29,8 +29,21 @@ export default function KakaoMapScript() {
     
         // 지도 중심좌표를 접속위치로 변경합니다
         map.setCenter(locPosition);
-    }
 
+        const map = new kakao.maps.Map(container, options);
+
+        const markerdata = await BusPosition();
+        markerdata.forEach(el => {
+            new kakao.maps.Marker({
+                //마커가 표시 될 지도
+                map: map,
+                //마커가 표시 될 위치
+                position: new kakao.maps.LatLng(el.posX, el.posY),
+                //마커에 hover시 나타날 title
+                title: el.name,
+              });
+        });
+    }
     if (navigator.geolocation) {
         // GeoLocation을 이용해서 접속 위치를 얻어옵니다.
         navigator.geolocation.getCurrentPosition(function(position){
