@@ -4,8 +4,8 @@ import BusPosition from '../utils/BusPosition';
 export default function KakaoMapScript() {
 
     async function displayMarker(locPosition, message) {
-        const imageSrc = 'https://cdn.wip-news.com/news/photo/202106/7047_8075_5142.jpg';
-        let imageSize = new kakao.maps.Size(24, 35);
+        const imageSrc = 'https://cdn-icons.flaticon.com/png/512/5860/premium/5860579.png?token=exp=1657787052~hmac=c2b8562e2954a592527852b4040807bd';
+        let imageSize = new kakao.maps.Size(35, 35);
         let markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize);
     
         // 마커를 생성합니다
@@ -40,7 +40,39 @@ export default function KakaoMapScript() {
                 //마커에 hover시 나타날 title
                 title: el.name,
               });
+              
+              const infoContent =`
+                <div class="iwBox">
+                        <h4 class="nameBox">정거장 이름:${el.name}</h4>
+                </div>
+              `;
+        
+        const infowindow = new kakao.maps.InfoWindow({
+            content: infoContent, // 인포윈도우에 표시할 내용
         });
+
+        kakao.maps.event.addListener(
+            marker,
+            "mouseover", //마우스를 올려둘 때 이벤트
+            makeOverListener(map, marker, infowindow),
+          );
+        kakao.maps.event.addListener(
+            marker,
+            "mouseout", //마우스가 떠날 때 이벤트
+            makeOutListener(infowindow)
+        );
+    });
+        function makeOverListener(map, marker, infowindow) {
+            return function () {
+            infowindow.open(map, marker);
+        };
+        }
+        //인포윈도우를 닫는 클로저를 만드는 함수
+        function makeOutListener(infowindow) {
+            return function () {
+            infowindow.close();
+        };
+  }
     }
     if (navigator.geolocation) {
         // GeoLocation을 이용해서 접속 위치를 얻어옵니다.
@@ -50,7 +82,7 @@ export default function KakaoMapScript() {
                 lon = position.coords.longitude; // 경도
                 
             let locPostion = new kakao.maps.LatLng(lat, lon), //마커가 표시될 위치를 geolocation 좌표로 생성합니다.
-                message = '<div style="padding:5px;">잡았죠ㅋ</div>'; // kakao map window 에 표시될 내용
+                message = '<div id="my-position" style="padding:5px;">현재 나의 위치</div>'; // kakao map window 에 표시될 내용
 
             // 마커와 인포윈도우를 표시하는 함수
             displayMarker(locPostion,message);
