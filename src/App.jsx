@@ -13,7 +13,7 @@ function App() {
         <div className="App">
             <BrowserRouter>
                 <Routes>
-                    <Route path={"/map"} element={
+                    <Route path={"/bus"} element={
                         <div style={{ maxWidth: "1280px", width: "100vw", height: "100vh", }}>
                             <Header setBusStopInfo={setBusStopInfo} />
                             <Map busStopInfo={busStopInfo} />

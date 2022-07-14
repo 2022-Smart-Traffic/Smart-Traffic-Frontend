@@ -8,7 +8,7 @@ export const MainComponent = () => {
         <div className="main">
             <div className="main--quick-menu">
                 <Header />
-                <Link to="/map">
+                <Link to="/bus">
                     <div className="main--quick-menu-icon-wrap">
                         <BusIcon className="main--quick-menu-icon" />
                     </div>

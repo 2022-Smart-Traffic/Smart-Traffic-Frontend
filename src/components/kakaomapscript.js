@@ -127,5 +127,22 @@ export default function KakaoMapScript(busStopInfo) {
         console.log(polyline)
 
         polyline.setMap(map);
+        
+        let xpos =  128.962787;
+        let ypos =  35.21297978;
+        const content = '<img src="/images/bus.svg" width="50px" height="50px">';
+        setInterval(() => {
+            const pos = new kakao.maps.LatLng(ypos+=0.000005, xpos-=0.00005);
+            console.log(ypos, xpos)
+            const busOverlay = new kakao.maps.CustomOverlay({
+                position: pos,
+                content
+            });
+            busOverlay.setMap(map);
+            setTimeout(() => {
+                busOverlay.setMap(null);
+            }, 700);
+        }, 700);
     })();
+
 }
