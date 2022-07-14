@@ -4,7 +4,7 @@ import "../styles/header.css";
 export default function Header(props) {
     return (
         <header>
-            <p className="header-text">This is Header!</p>
+            <p className="header-text">Smart-Traffic</p>
             <Search setBusStopInfo={props.setBusStopInfo} />
         </header>
     )

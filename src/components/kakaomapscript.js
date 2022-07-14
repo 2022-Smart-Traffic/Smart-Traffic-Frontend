@@ -53,11 +53,17 @@ export default function KakaoMapScript(busStopInfo) {
         const infowindow = new kakao.maps.InfoWindow({
             content: infoContent, // 인포윈도우에 표시할 내용
         });
-
+        
+        kakao.maps.event.addListener(
+            marker,
+            "click", //마우스가 떠날 때 이벤트
+            () => window.location = '/seat'
+        );
         kakao.maps.event.addListener(
             marker,
             "mouseover", //마우스를 올려둘 때 이벤트
             makeOverListener(map, marker, infowindow),
+
           );
         kakao.maps.event.addListener(
             marker,

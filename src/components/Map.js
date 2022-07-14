@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import KakaoMapScript from "./kakaomapscript";
 import '../styles/map.css'
 
@@ -11,6 +11,12 @@ export default function Map(props) {
 
     return (
         // map size
-        <div id='myMap'className='kakao-map'></div>
+        <div className='map-component'>
+            <div 
+                id='myMap'
+                className='kakao-map'
+            >
+            </div>
+        </div>
     );
 }

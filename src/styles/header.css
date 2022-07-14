@@ -13,6 +13,8 @@ header {
 
 .header-text {
     text-align: center;
+    font-size: 18px;
+    margin-left: 10px;
 }
 
 .busline-search {
