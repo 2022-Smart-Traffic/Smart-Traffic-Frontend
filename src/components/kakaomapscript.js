@@ -32,14 +32,20 @@ export default function KakaoMapScript() {
 
         const markerdata = await BusPosition();
         markerdata.forEach(el => {
-            new kakao.maps.Marker({
-                //마커가 표시 될 지도
-                map: map,
-                //마커가 표시 될 위치
-                position: new kakao.maps.LatLng(el.posY, el.posX),
-                //마커에 hover시 나타날 title
-                title: el.name,
+            const markerPosition = new kakao.maps.LatLng(el.posY, el.posX);
+            let marker = new kakao.maps.Marker({
+                position: markerPosition, 
               });
+            marker.setMap(map);
+              
+            // new kakao.maps.Marker({
+            //     //마커가 표시 될 지도
+            //     map: map,
+            //     //마커가 표시 될 위치
+            //     position: new kakao.maps.LatLng(el.posY, el.posX),
+            //     //마커에 hover시 나타날 title
+            //     title: el.name,
+            //   });
               
               const infoContent =`
                 <div class="iwBox">
