@@ -1,10 +1,11 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 
-const BusData = () => {
+const BusData = ( props ) => {
     const [ BusList , setBusList ] = useState([]);
+    const n = '강서구2'
     const fetchData = async() => {
-        const result = await axios.get('https://jsonplaceholder.typicode.com/todos/1');
+        const result = await axios.get(`/api/bus/search?lineNo=${n}`);
         setBusList(result.data);
     }
     useEffect(()=>{
