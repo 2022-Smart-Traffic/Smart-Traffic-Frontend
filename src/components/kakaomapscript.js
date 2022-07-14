@@ -70,4 +70,23 @@ export default function KakaoMapScript() {
     
     // map 생성 및 지정
     const map = new kakao.maps.Map(container, options);
+
+    (async () => {
+        const busStopPos = await BusPosition();
+        console.log(busStopPos)
+        const busLinePath = busStopPos.map(pos => {
+            return new kakao.maps.LatLng(pos.posY, pos.posX);
+        });
+
+        const polyline = new kakao.maps.Polyline({
+            path: busLinePath, // 선을 구성하는 좌표배열 입니다
+            strokeWeight: 5, // 선의 두께 입니다
+            strokeColor: '#0000AE', // 선의 색깔입니다
+            strokeOpacity: 0.7, // 선의 불투명도 입니다 1에서 0 사이의 값이며 0에 가까울수록 투명합니다
+            strokeStyle: 'solid' // 선의 스타일입니다
+        });
+        console.log(polyline)
+
+        polyline.setMap(map);
+    })();
 }
