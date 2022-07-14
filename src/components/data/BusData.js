@@ -21,6 +21,7 @@ const BusData = ( props ) => {
             <p>테스트</p>
             <div>
                 {JSON.stringify(BusList)}
+                {JSON.stringify(BusList)}
             </div>
         </div>
     );

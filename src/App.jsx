@@ -12,7 +12,7 @@ function App() {
         <BrowserRouter>
             <Routes>
                 <Route path={"/map"} element={
-                  <div>
+                  <div style={{ maxWidth: "1280px", width: "100vw", height: "100vh", }}>
                     <Header />
                     <Map />
                   </div>
