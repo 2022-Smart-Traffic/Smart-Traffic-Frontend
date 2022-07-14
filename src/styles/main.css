@@ -8,10 +8,10 @@
 
 .main--quick-menu {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
     gap: 25px;
     width: 100%;
-    max-width: 620px;
+    max-width: 1220px;
     background-color: rgba(255, 255, 255, .5);
     border-radius: 10%;
     padding: 25px;
@@ -41,4 +41,8 @@
     color: black;
     font-size: 24px;
     font-weight: bold;
+}
+
+.body {
+    background-image: url()
 }
