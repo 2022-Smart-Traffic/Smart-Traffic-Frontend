@@ -2,7 +2,7 @@ import { useState , useEffect } from "react";
 import BusData from "./BusData";
 import axios from "axios";
 
-const BusPosition = () => {
+function BusPosition() {
     const [ busP , setBusPosition ] = useState([]);
     const BusList = BusData();
     if (BusList[0].lineid._text) {
@@ -12,14 +12,11 @@ const BusPosition = () => {
         const result = await axios.get(`/api/bus/busStop?lineId=${BusList[0].lineid._text}&lineNo=${BusList[0].buslinenum._text}`);
         setBusPosition(result.data);
     }
-    useEffect(()=>{
-        fetchData();
-    },[])
+    // useEffect(()=>{
+    //     fetchData();
+    // },[])
 
-    return (
-        <div>
-            {JSON.stringify(busP)}
-        </div>
-    );
+    fetchData();
+    return JSON.stringify(busP);
 }
 export default BusPosition;

@@ -1,7 +1,5 @@
 import { useState } from "react"
-import SampleData from "./data/Sample";
 import '../styles/header.css';
-import BusData from './data/BusData';
 
 const Search = () => {
     const [ searchList , setSearchList ] = useState('');
@@ -9,7 +7,7 @@ const Search = () => {
         <div>
             <input type="text" placeholder="test" onChange={event => {setSearchList(event.target.value)}}></input>
             <ul>
-                {SampleData.filter((value)=>{
+                {/* {SampleData.filter((value)=>{
                     if ( searchList === "" ) {
                         return value;
                     }
@@ -18,7 +16,7 @@ const Search = () => {
                     }
                 }).map((value,key) => {
                     return <li>{value.name}</li>;
-                })}
+                })} */}
             </ul>
         </div>
     )

@@ -1,5 +1,5 @@
 /*global kakao */
-import BusData from './data/BusData';
+import BusData from '../utils/BusData';
 
 export default function KakaoMapScript() {
 
